@@ -9,13 +9,14 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <webflow-version>2.4.7.RELEASE</webflow-version>
-        <spring-framework-version>4.3.5.RELEASE</spring-framework-version>
+        <spring-framework-version>4.1.5.RELEASE</spring-framework-version>
         <springsecurity-version>5.0.2.RELEASE</springsecurity-version>
         <slf4j-version>1.7.25</slf4j-version>
         <mojarra-version>2.2.10</mojarra-version>
         <primefaces-version>6.1</primefaces-version>
+        <hibernate-version>4.3.8.Final</hibernate-version>
+        <mysql-connector-version>6.0.6</mysql-connector-version>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
@@ -29,9 +30,9 @@
         </dependencies>
     </dependencyManagement>
 
-
     <dependencies>
 
+        <!-- JSF and Primefaces -->
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
@@ -48,7 +49,7 @@
             <version>${primefaces-version}</version>
         </dependency>
 
-
+        <!--Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -65,10 +66,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
         </dependency>
+
+        <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+
+        <!-- Spring WebFlow -->
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-webflow</artifactId>
@@ -79,6 +84,8 @@
             <artifactId>spring-faces</artifactId>
             <version>${webflow-version}</version>
         </dependency>
+
+        <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -90,7 +97,7 @@
             <version>${springsecurity-version}</version>
         </dependency>
 
-
+        <!-- Loggers -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -107,8 +114,6 @@
             <version>${slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
-
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -134,6 +139,7 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -141,7 +147,23 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
 
+        <!-- MySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-version}</version>
+        </dependency>
     </dependencies>
-
 </project>
