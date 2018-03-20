@@ -32,6 +32,12 @@
         <property name="description">
             <column name="description" sql-type="varchar(6000)" length="6000"/>
         </property>
+        <many-to-one name="genre" class="com.onlineLibrary.library.entities.Genre" fetch="join">
+            <column name="genre_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="publisher" class="com.onlineLibrary.library.entities.Publisher" fetch="join">
+            <column name="publisher_id" not-null="true"/>
+        </many-to-one>
       <set name="writers" table="book_writer">
           <key column="book_id" not-null="true"/>
           <many-to-many column="writer_id" class="com.onlineLibrary.library.entities.Writer"/>

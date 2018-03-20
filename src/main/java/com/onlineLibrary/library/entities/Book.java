@@ -14,11 +14,29 @@ public class Book {
     private byte[] content;
     private byte[] image;
     private String description;
+    private Genre genre;
+    private Publisher publisher;
 
     private Set<Writer> writers = new HashSet<Writer>();
 
     public Set<Writer> getWriters() {
         return writers;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public void setWriters(Set<Writer> writers) {

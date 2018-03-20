@@ -1,8 +1,11 @@
 package com.onlineLibrary.library.entities;
 
+import java.util.Set;
+
 public class Publisher {
     private int id;
     private String name;
+    private Set<Book> books;
 
     public int getId() {
         return id;
@@ -10,6 +13,14 @@ public class Publisher {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public String getName() {
