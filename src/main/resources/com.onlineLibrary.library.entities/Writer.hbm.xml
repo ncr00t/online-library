@@ -14,5 +14,9 @@
         <property name="fullName">
             <column name="fullName" sql-type="varchar(180)" length="180"/>
         </property>
+        <set name="books" table="book_writer">
+            <key column="writer_id" not-null="true"/>
+            <many-to-many column="book_id" class="com.onlineLibrary.library.entities.Book"/>
+        </set>
     </class>
 </hibernate-mapping>

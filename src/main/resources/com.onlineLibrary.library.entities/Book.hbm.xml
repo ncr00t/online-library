@@ -32,5 +32,9 @@
         <property name="description">
             <column name="description" sql-type="varchar(6000)" length="6000"/>
         </property>
+      <set name="writers" table="book_writer">
+          <key column="book_id" not-null="true"/>
+          <many-to-many column="writer_id" class="com.onlineLibrary.library.entities.Writer"/>
+      </set>
     </class>
 </hibernate-mapping>
