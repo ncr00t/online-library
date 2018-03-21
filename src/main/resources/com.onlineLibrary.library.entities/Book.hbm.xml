@@ -38,9 +38,9 @@
         <many-to-one name="publisher" class="com.onlineLibrary.library.entities.Publisher" fetch="join">
             <column name="publisher_id" not-null="true"/>
         </many-to-one>
-      <set name="writers" table="book_writer">
+      <bag name="writers" table="book_writer">
           <key column="book_id" not-null="true"/>
           <many-to-many column="writer_id" class="com.onlineLibrary.library.entities.Writer"/>
-      </set>
+      </bag>
     </class>
 </hibernate-mapping>

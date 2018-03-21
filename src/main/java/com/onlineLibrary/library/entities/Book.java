@@ -1,8 +1,6 @@
 package com.onlineLibrary.library.entities;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Book {
     private int id;
@@ -17,9 +15,9 @@ public class Book {
     private Genre genre;
     private Publisher publisher;
 
-    private Set<Writer> writers = new HashSet<Writer>();
+    private List<Writer> writers = new ArrayList<Writer>();
 
-    public Set<Writer> getWriters() {
+    public List<Writer> getWriters() {
         return writers;
     }
 
@@ -39,7 +37,7 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public void setWriters(Set<Writer> writers) {
+    public void setWriters(List<Writer> writers) {
         this.writers = writers;
     }
 

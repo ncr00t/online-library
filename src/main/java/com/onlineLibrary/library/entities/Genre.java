@@ -1,11 +1,12 @@
 package com.onlineLibrary.library.entities;
 
+import java.util.List;
 import java.util.Set;
 
 public class Genre {
     private int id;
     private String name;
-    private Set<Book> books;
+    private List<Book> books;
 
     public int getId() {
         return id;
@@ -16,11 +17,11 @@ public class Genre {
     }
 
 
-    public Set<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 

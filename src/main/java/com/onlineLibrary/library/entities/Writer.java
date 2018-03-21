@@ -1,20 +1,23 @@
 package com.onlineLibrary.library.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Writer {
+
     private int id;
     private Date birthday;
     private String fullName;
-    private Set<Book> books = new HashSet<Book>();
+    private List<Book> books = new ArrayList<Book>();
 
-    public Set<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 
