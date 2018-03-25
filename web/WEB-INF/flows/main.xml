@@ -3,5 +3,18 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
-<view-state id="main" />
+    <view-state id="main" >
+        <transition on="deleteBookById">
+            <evaluate expression="librarySearch.deleteBookById()"/>
+        </transition>
+        <transition on="findByGenre">
+            <evaluate expression="librarySearch.findBookByGenre()"/>
+        </transition>
+        <transition on="findByWriter">
+            <evaluate expression="librarySearch.findBookByWriter()"/>
+        </transition>
+        <transition on="findByPublisher">
+            <evaluate expression="librarySearch.findBookByPublisher()"/>
+        </transition>
+    </view-state>
 </flow>

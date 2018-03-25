@@ -7,7 +7,53 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
    >
-<f:view>
-    <p:button value="submit"/>
-</f:view>
+<ui:composition template="/WEB-INF/views/library.xhtml">
+    <ui:define name="title">
+       Список книг
+    </ui:define>
+
+    <ui:define name="content">
+       <h:form id="booksForm">
+          <p:dataGrid rowIndexVar="rowIndex" columns="2"  lazy="true" var="book" value="${librarySearch.books}" paginator="true"
+                      rowsPerPageTemplate="1,2,3" paginatorTemplate="{RowsPerPageDropdown} {PageLinks}" paginatorAlwaysVisible="true" emptyMessage="">
+             <div class="item">
+                <div class="image-info">
+                   <h:outputLink styleClass="content_link"  target="_blank">
+                       <p:graphicImage value="/ShowBookCover?bookCoverId=#{rowIndex}"  width="110" height="200"/>
+                      <f:param name="id" value="#{book.id}"/>
+                   </h:outputLink>
+                </div>
+                <div class="info">
+                   <div class="book_name">
+                      <h:outputLink id="bookName" styleClass="title" target="_blank">
+                         #{book.name}
+                         <f:param name="id" value="#{book.id}"/>
+                      </h:outputLink>
+                   </div>
+                   <ui:repeat value="${book.writers}" var="writer">
+                      <span><strong>Автор:</strong> #{writer.fullName}</span>
+                   </ui:repeat>
+                   <p><strong>Жанр:</strong> #{book.genre.name} </p>
+                   <p><strong>ISBN:</strong> #{book.isbn} </p>
+                   <p><strong>Издательство:</strong> #{book.publisher.name}</p>
+                   <p><strong>Количество страниц:</strong> #{book.pageCount}</p>
+                   <p><strong>Язык издания</strong> #{book.languageOfPublish}</p>
+                   <p><strong>Год издания:</strong> #{book.yearOfPublish}</p>
+                   <p><strong>Описание:</strong> #{book.description}</p>
+
+                </div>
+
+                <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
+                   <p class="read">Читать</p>
+                   <f:param name="id" value="#{book.id}"/>
+                </h:outputLink>
+                <p:commandLink value="Удалить" class="delete" styleClass="mr" action="deleteBookById" actionListener="#{librarySearch.setBookId(book.id)}" ajax="false"/>
+             </div>
+
+          </p:dataGrid>
+       </h:form>
+    </ui:define>
+
+
+</ui:composition>
 </html>
