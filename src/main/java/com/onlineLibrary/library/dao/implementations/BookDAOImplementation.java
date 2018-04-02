@@ -1,7 +1,6 @@
 package com.onlineLibrary.library.dao.implementations;
 
 import com.onlineLibrary.library.dao.interfaces.BookDAO;
-import com.onlineLibrary.library.dao.interfaces.FieldTableDAO;
 import com.onlineLibrary.library.entities.Book;
 import com.onlineLibrary.library.entities.Genre;
 import com.onlineLibrary.library.entities.Publisher;
@@ -70,11 +69,10 @@ public class BookDAOImplementation implements BookDAO {
 
     @Transactional
     @Override
-    public boolean deleteBookById(int bookId) {
+    public int deleteBookById(int bookId) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("DELETE Book  WHERE  id = :id");
         query.setParameter("id",bookId);
-        int result = query.executeUpdate();
-        return result > 0;
+        return bookId;
     }
 }
