@@ -39,8 +39,31 @@
         <property name="suffix" value=".xhtml"/>
     </bean>
 
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="jdbc/Library"/>
+    <!--<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">-->
+        <!--<property name="jndiName" value="jdbc/Library"/>-->
+    <!--</bean>-->
+
+    <bean id="bookDAO" class="com.onlineLibrary.library.dao.implementations.BookDAOImplementation">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/library"/>
+        <property name="username" value="root"/>
+        <property name="password" value="toor"/>
+    </bean>
+
+    <bean id="libraryService" class="com.onlineLibrary.library.service.LibraryService">
+        <property name="bookDAO" ref="bookDAO"/>
+    </bean>
+
+    <bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+        <property name="attributes">
+            <map>
+                <entry key="libraryService" value-ref="libraryService"/>
+            </map>
+        </property>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
