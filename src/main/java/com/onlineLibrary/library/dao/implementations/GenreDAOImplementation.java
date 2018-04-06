@@ -4,6 +4,7 @@ import com.onlineLibrary.library.dao.interfaces.GenreDAO;
 import com.onlineLibrary.library.entities.Genre;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,9 @@ public class GenreDAOImplementation implements GenreDAO {
     @Transactional
     public List<Genre> getAllGenres() {
         Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         genres = session.createQuery("FROM Genre").list();
+        transaction.commit();
         return genres;
     }
 }

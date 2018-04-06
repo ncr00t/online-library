@@ -8,12 +8,11 @@ import com.onlineLibrary.library.entities.Writer;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Set;
 
 @Repository
 public class BookDAOImplementation implements BookDAO {
@@ -27,14 +26,14 @@ public class BookDAOImplementation implements BookDAO {
     @Transactional
     public List<Book> getAllBooks() {
         Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         books = session.createQuery("FROM Book").list();
+        transaction.commit();
         return books;
     }
 
 
     public List<Book> getBooksByWriter(Writer writer) {
-//        Session session = sessionFactory.getCurrentSession();
-//        session.beginTransaction();
         books = writer.getBooks();
         return books;
     }
@@ -75,4 +74,6 @@ public class BookDAOImplementation implements BookDAO {
         query.setParameter("id",bookId);
         return bookId;
     }
+
+
 }

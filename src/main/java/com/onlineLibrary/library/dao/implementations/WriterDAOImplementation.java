@@ -4,6 +4,7 @@ import com.onlineLibrary.library.dao.interfaces.WriterDAO;
 import com.onlineLibrary.library.entities.Writer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,9 @@ public class WriterDAOImplementation implements WriterDAO {
     @Transactional
     public List<Writer> getAllWriters() {
         Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         writers = session.createQuery("FROM Writer").list();
+        transaction.commit();
         return writers;
     }
 }
