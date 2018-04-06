@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Facelet Title</title>
+</h:head>
+
+<h:body>
+    <ui:composition>
+
+        <div class="left-menu">
+            <br/>
+            <br/>
+            <p align="center" class="title"><strong>Жанры</strong></p>
+                 <ui:include src="/WEB-INF/views/genres.xhtml"/>
+            <br/>
+            <br/>
+
+            <p align="center" class="title"><strong>Авторы</strong></p>
+                 <ui:include src="/WEB-INF/views/writers.xhtml"/>
+            <br/>
+            <br/>
+
+            <p align="center" class="title"><strong>Издательства</strong></p>
+                 <ui:include src="/WEB-INF/views/publishers.xhtml"/>
+        </div>
+    </ui:composition>
+</h:body>
+</html>
+
