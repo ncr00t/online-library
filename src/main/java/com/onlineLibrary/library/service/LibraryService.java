@@ -3,22 +3,23 @@ package com.onlineLibrary.library.service;
 import com.onlineLibrary.library.dao.interfaces.BookDAO;
 import com.onlineLibrary.library.entities.Book;
 import com.onlineLibrary.library.entities.Genre;
-import com.onlineLibrary.library.entities.Publisher;
 import com.onlineLibrary.library.entities.Writer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import com.onlineLibrary.library.entities.Publisher;
 
 import java.util.List;
 
+@Component("libraryService")
+@Scope("singleton")
 public class LibraryService {
 
+    private List<Book> books;
     private BookDAO bookDAO;
-
     private Genre genre;
-
-    private int id;
-
+    private int bookId;
     private Writer writer;
-
     private Publisher publisher;
 
     @Autowired
@@ -30,8 +31,8 @@ public class LibraryService {
         this.genre = genre;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public void setWriter(Writer writer) {
@@ -43,22 +44,25 @@ public class LibraryService {
     }
 
     public List<Book> getBooks(){
-        return bookDAO.getAllBooks();
+        if(books == null){
+            books = bookDAO.getAllBooks();
+        }
+        return books;
     }
 
     public int deleteBookById(){
-        return bookDAO.deleteBookById(id);
+        return bookDAO.deleteBookById(bookId);
     }
 
-    public List<Book> findBookByGenre(){
-        return bookDAO.getBooksByGenre(genre);
+    public void findBookByGenre(){
+        books = bookDAO.getBooksByGenre(genre);
     }
 
-    public List<Book> findBookByWriter(){
-        return bookDAO.getBooksByWriter(writer);
+    public void findBookByWriter(){
+        books = bookDAO.getBooksByWriter(writer);
     }
 
-    public List<Book> findBookByPublisher(){
-        return bookDAO.getBooksByPublisher(publisher);
+    public void findBookByPublisher(){
+        books = bookDAO.getBooksByPublisher(publisher);
     }
 }
