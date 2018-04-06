@@ -5,16 +5,16 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
     <view-state id="main" >
         <transition on="deleteBookById">
-            <evaluate expression="librarySearch.deleteBookById()"/>
+            <evaluate expression="libraryService.deleteBookById()"/>
         </transition>
         <transition on="findByGenre">
-            <evaluate expression="librarySearch.findBookByGenre()"/>
+            <evaluate expression="libraryService.findBookByGenre()"/>
         </transition>
         <transition on="findByWriter">
-            <evaluate expression="librarySearch.findBookByWriter()"/>
+            <evaluate expression="libraryService.findBookByWriter()"/>
         </transition>
         <transition on="findByPublisher">
-            <evaluate expression="librarySearch.findBookByPublisher()"/>
+            <evaluate expression="libraryService.findBookByPublisher()"/>
         </transition>
     </view-state>
 </flow>

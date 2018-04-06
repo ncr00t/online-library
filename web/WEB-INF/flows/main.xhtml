@@ -14,20 +14,20 @@
 
     <ui:define name="content">
        <h:form id="booksForm">
-          <p:dataGrid rowIndexVar="rowIndex" columns="2"  lazy="true" var="book" value="${librarySearch.books}" paginator="true"
+          <p:dataGrid rowIndexVar="rowIndex" columns="2"  lazy="true" var="book" value="${libraryService.books}" paginator="true"
                       rowsPerPageTemplate="1,2,3" paginatorTemplate="{RowsPerPageDropdown} {PageLinks}" paginatorAlwaysVisible="true" emptyMessage="">
              <div class="item">
                 <div class="image-info">
                    <h:outputLink styleClass="content_link"  target="_blank">
-                       <p:graphicImage value="/ShowBookCover?bookCoverId=#{rowIndex}"  width="110" height="200"/>
-                      <f:param name="id" value="#{book.id}"/>
+                       <p:graphicImage value="/ViewBookCover?bookCoverId=#{rowIndex}"  width="110" height="200"/>
+                      <f:param name="bookId" value="#{book.id}"/>
                    </h:outputLink>
                 </div>
                 <div class="info">
                    <div class="book_name">
                       <h:outputLink id="bookName" styleClass="title" target="_blank">
                          #{book.name}
-                         <f:param name="id" value="#{book.id}"/>
+                         <f:param name="bookId" value="#{book.id}"/>
                       </h:outputLink>
                    </div>
                    <ui:repeat value="${book.writers}" var="writer">
@@ -45,9 +45,9 @@
 
                 <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
                    <p class="read">Читать</p>
-                   <f:param name="id" value="#{book.id}"/>
+                   <f:param name="bookId" value="#{book.id}"/>
                 </h:outputLink>
-                <p:commandLink value="Удалить" class="delete" styleClass="mr" action="deleteBookById" actionListener="#{librarySearch.setBookId(book.id)}" ajax="false"/>
+                <p:commandLink value="Удалить" class="delete" styleClass="mr" action="deleteBookById" actionListener="#{libraryService.setBookId(book.id)}" ajax="false"/>
              </div>
 
           </p:dataGrid>
