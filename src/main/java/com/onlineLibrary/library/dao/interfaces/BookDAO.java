@@ -6,7 +6,6 @@ import com.onlineLibrary.library.entities.Publisher;
 import com.onlineLibrary.library.entities.Writer;
 
 import java.util.List;
-import java.util.Set;
 
 public interface BookDAO {
     List<Book> getAllBooks();
