@@ -1,8 +1,10 @@
 package com.onlineLibrary.library.entities;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Book {
+public class  Book {
     private int id;
     private String isbn;
     private String name;
@@ -12,6 +14,8 @@ public class Book {
     private byte[] content;
     private byte[] image;
     private String description;
+    private int genreId;
+    private int publisherId;
     private Genre genre;
     private Publisher publisher;
 
@@ -40,6 +44,7 @@ public class Book {
     public void setWriters(List<Writer> writers) {
         this.writers = writers;
     }
+
 
     public int getId() {
         return id;
@@ -113,6 +118,22 @@ public class Book {
         this.description = description;
     }
 
+    public int getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
+    }
+
+    public int getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(int publisherId) {
+        this.publisherId = publisherId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,6 +144,8 @@ public class Book {
         if (id != book.id) return false;
         if (pageCount != book.pageCount) return false;
         if (yearOfPublish != book.yearOfPublish) return false;
+        if (genreId != book.genreId) return false;
+        if (publisherId != book.publisherId) return false;
         if (isbn != null ? !isbn.equals(book.isbn) : book.isbn != null) return false;
         if (name != null ? !name.equals(book.name) : book.name != null) return false;
         if (languageOfPublish != null ? !languageOfPublish.equals(book.languageOfPublish) : book.languageOfPublish != null)
@@ -145,6 +168,8 @@ public class Book {
         result = 31 * result + Arrays.hashCode(content);
         result = 31 * result + Arrays.hashCode(image);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + genreId;
+        result = 31 * result + publisherId;
         return result;
     }
 }

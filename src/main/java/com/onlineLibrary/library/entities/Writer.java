@@ -2,15 +2,12 @@ package com.onlineLibrary.library.entities;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Writer {
-
     private int id;
-    private Date birthday;
     private String fullName;
+    private Date birthday;
     private List<Book> books = new ArrayList<Book>();
 
     public List<Book> getBooks() {
@@ -29,20 +26,20 @@ public class Writer {
         this.id = id;
     }
 
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
     public String getFullName() {
         return fullName;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     @Override
@@ -53,8 +50,8 @@ public class Writer {
         Writer writer = (Writer) o;
 
         if (id != writer.id) return false;
-        if (birthday != null ? !birthday.equals(writer.birthday) : writer.birthday != null) return false;
         if (fullName != null ? !fullName.equals(writer.fullName) : writer.fullName != null) return false;
+        if (birthday != null ? !birthday.equals(writer.birthday) : writer.birthday != null) return false;
 
         return true;
     }
@@ -62,8 +59,8 @@ public class Writer {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
     }
 }
