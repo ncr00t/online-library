@@ -40,7 +40,6 @@
                    <p><strong>Язык издания</strong> #{book.languageOfPublish}</p>
                    <p><strong>Год издания:</strong> #{book.yearOfPublish}</p>
                    <p><strong>Описание:</strong> #{book.description}</p>
-
                 </div>
 
                 <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
@@ -49,11 +48,8 @@
                 </h:outputLink>
                 <p:commandLink value="Удалить" class="delete" styleClass="mr" action="deleteBookById" actionListener="#{libraryService.setBookId(book.id)}" ajax="false"/>
              </div>
-
           </p:dataGrid>
        </h:form>
     </ui:define>
-
-
 </ui:composition>
 </html>
