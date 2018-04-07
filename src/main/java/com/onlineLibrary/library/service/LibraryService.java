@@ -18,9 +18,11 @@ public class LibraryService {
     private List<Book> books;
     private BookDAO bookDAO;
     private Genre genre;
-    private int bookId;
     private Writer writer;
     private Publisher publisher;
+    private String bookName;
+    private int bookId;
+
 
     @Autowired
     public void setBookDAO(BookDAO bookDAO) {
@@ -41,6 +43,14 @@ public class LibraryService {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public String getBookName() {
+        return bookName;
     }
 
     public List<Book> getBooks(){
@@ -65,4 +75,9 @@ public class LibraryService {
     public void findBookByPublisher(){
         books = bookDAO.getBooksByPublisher(publisher);
     }
+
+    public void findBooksByName(){
+        books = bookDAO.getBooksByName(bookName);
+    }
+
 }
