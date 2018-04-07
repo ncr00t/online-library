@@ -1,4 +1,4 @@
-package com.onlineLibrary.library.book_cover_servlet;
+package com.onlineLibrary.library.servlets.book_cover_servlet;
 
 import com.onlineLibrary.library.service.LibraryService;
 
@@ -15,7 +15,8 @@ urlPatterns = {"/ViewBookCover"})
 public class ViewBookCover extends HttpServlet {
 
     protected  void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        response.setContentType("image/jpeg");
+        String imageFormat = "image/jpeg";
+        response.setContentType(imageFormat);
 
         try (OutputStream outputStream = response.getOutputStream()){
             int bookCoverId = Integer.valueOf(request.getParameter("bookCoverId"));
