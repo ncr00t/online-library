@@ -16,5 +16,8 @@
         <transition on="findByPublisher">
             <evaluate expression="libraryService.findBookByPublisher()"/>
         </transition>
+        <transition on="findBooksByName">
+            <evaluate expression="libraryService.findBooksByName()"/>
+        </transition>
     </view-state>
 </flow>
