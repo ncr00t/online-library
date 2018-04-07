@@ -22,6 +22,8 @@ public class BookDAOImplementation implements BookDAO {
 
     private List<Book> books;
 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+    }
 
     @Transactional
     public List<Book> getAllBooks() {
@@ -31,7 +33,6 @@ public class BookDAOImplementation implements BookDAO {
         transaction.commit();
         return books;
     }
-
 
     public List<Book> getBooksByWriter(Writer writer) {
         books = writer.getBooks();
@@ -49,7 +50,6 @@ public class BookDAOImplementation implements BookDAO {
         return books;
     }
 
-
     public List<Book> getBooksByGenre(Genre genre) {
        books = genre.getBooks();
         return books;
@@ -60,15 +60,11 @@ public class BookDAOImplementation implements BookDAO {
         return books;
     }
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-    }
-
     @Transactional
     public Object getFieldValueById(int id, String fieldName) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("FROM Book as b WHERE b.id = :id");
         query.setParameter("id",id);
-//        query.setParameter("fieldName", fieldName);
         books = query.list();
         return books;
     }
@@ -81,6 +77,4 @@ public class BookDAOImplementation implements BookDAO {
         query.setParameter("id",bookId);
         return bookId;
     }
-
-
 }
