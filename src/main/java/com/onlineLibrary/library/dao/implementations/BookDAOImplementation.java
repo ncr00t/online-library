@@ -73,8 +73,10 @@ public class BookDAOImplementation implements BookDAO {
     @Override
     public int deleteBookById(int bookId) {
         Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("DELETE Book  WHERE  id = :id");
         query.setParameter("id",bookId);
+        transaction.commit();
         return bookId;
     }
 }
