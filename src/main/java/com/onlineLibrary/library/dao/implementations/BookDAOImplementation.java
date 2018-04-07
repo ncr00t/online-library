@@ -38,8 +38,15 @@ public class BookDAOImplementation implements BookDAO {
         return books;
     }
 
+    @Transactional
     public List<Book> getBooksByName(String bookName) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("FROM Book as b WHERE b.name = :name");
+        query.setParameter("name", bookName);
+        books = query.list();
+        transaction.commit();
+        return books;
     }
 
 
