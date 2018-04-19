@@ -52,10 +52,19 @@ public class LibraryService {
         return bookName;
     }
 
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
     public List<Book> getBooks(){
-        if(books == null){
-            books = bookDAO.getAllBooks();
+        if( books == null ){
+            getAllBooks();
         }
+        return books;
+    }
+
+    public List<Book> getAllBooks(){
+        books = bookDAO.getAllBooks();
         return books;
     }
 
