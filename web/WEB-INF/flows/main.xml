@@ -20,7 +20,7 @@
             <evaluate expression="libraryService.findBooksByName()"/>
         </transition>
         <transition on="showAllBooks">
-            <evaluate expression="libraryService.books"/>
+            <evaluate expression="libraryService.allBooks"/>
         </transition>
     </view-state>
 </flow>
