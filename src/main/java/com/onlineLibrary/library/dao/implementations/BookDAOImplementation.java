@@ -22,6 +22,10 @@ public class BookDAOImplementation implements BookDAO {
 
     private List<Book> books;
 
+    public BookDAOImplementation() {
+
+    }
+
     public void setSessionFactory(SessionFactory sessionFactory) {
     }
 
@@ -61,21 +65,13 @@ public class BookDAOImplementation implements BookDAO {
     }
 
     @Transactional
-    public Object getFieldValueById(int id, String fieldName) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM Book as b WHERE b.id = :id");
-        query.setParameter("id",id);
-        books = query.list();
-        return books;
-    }
-
-    @Transactional
     @Override
     public int deleteBookById(int bookId) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("DELETE Book  WHERE  id = :id");
+        Query query = session.createQuery("DELETE Book WHERE id = :id");
         query.setParameter("id",bookId);
+        query.executeUpdate();
         transaction.commit();
         return bookId;
     }
