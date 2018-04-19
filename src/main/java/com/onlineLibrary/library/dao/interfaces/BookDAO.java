@@ -14,5 +14,4 @@ public interface BookDAO {
     List<Book> getBooksByGenre(Genre genre);
     List<Book> getBooksByPublisher(Publisher publisher);
     int deleteBookById(int bookId);
-    Object getFieldValueById(int id, String fieldName);
 }
