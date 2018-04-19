@@ -15,7 +15,7 @@
             <column name="birthday" sql-type="date"/>
         </property>
         <bag name="books" table="book_writer">
-            <key column="writer_id" not-null="true" unique="true"/>
+            <key column="writer_id" not-null="true" />
             <many-to-many column="book_id" class="com.onlineLibrary.library.entities.Book"/>
         </bag>
     </class>

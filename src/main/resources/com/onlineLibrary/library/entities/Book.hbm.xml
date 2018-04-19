@@ -39,7 +39,7 @@
             <column name="publisher_id" not-null="true"/>
         </many-to-one>
         <bag name="writers" table="book_writer" >
-            <key column="book_id" not-null="true" unique="true"/>
+            <key column="book_id" not-null="true"/>
             <many-to-many column="writer_id" class="com.onlineLibrary.library.entities.Writer"/>
         </bag>
     </class>

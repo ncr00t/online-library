@@ -23,7 +23,6 @@ public class LibraryService {
     private String bookName;
     private int bookId;
 
-
     @Autowired
     public void setBookDAO(BookDAO bookDAO) {
         this.bookDAO = bookDAO;
@@ -79,5 +78,4 @@ public class LibraryService {
     public void findBooksByName(){
         books = bookDAO.getBooksByName(bookName);
     }
-
 }

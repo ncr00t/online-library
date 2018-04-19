@@ -19,5 +19,8 @@
         <transition on="findBooksByName">
             <evaluate expression="libraryService.findBooksByName()"/>
         </transition>
+        <transition on="showAllBooks">
+            <evaluate expression="libraryService.books"/>
+        </transition>
     </view-state>
 </flow>
