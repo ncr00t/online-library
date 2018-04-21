@@ -4,6 +4,7 @@ import com.onlineLibrary.library.entities.Book;
 import com.onlineLibrary.library.entities.Genre;
 import com.onlineLibrary.library.entities.Publisher;
 import com.onlineLibrary.library.entities.Writer;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
